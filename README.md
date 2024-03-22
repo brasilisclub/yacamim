@@ -27,8 +27,20 @@ It's not discarded, but also somewhat far-fetched for now. I aim to develop the 
 ### More Details
 Visit [Gemini Specifications](https://geminiprotocol.net/docs/specification.gmi) to get more details over the implementation of this software.
 
-### Usage
-Yacamim uses [Poetry]() to manage its dependecies, so we recommend to install it.
+### Installing
+#### Globally (using `pipx`)
+To install through `pipx`, run: 
+```bash
+pipx install git+https://github.com/thigcampos/yacamim
+```
+
+Then, you are able to use the `yacamim` command globally.
+```bash
+yacamim
+```
+
+#### Locally (using `poetry`)
+Yacamim uses [Poetry](https://python-poetry.org) to manage its dependecies, so we recommend to install it.
 Initially, you will need to clone the project:
 ```bash
 git clone https://github.com/thigcampos/yacamim.git
@@ -43,3 +55,23 @@ And, finally, run the `yacamim` command:
 ```bash
 poetry run yacamim
 ```
+
+### Usage
+After intalling and running, Yacamim will prompt a input in the terminal. Similar to:
+```bash
+>
+```
+
+Initally, you can enter a known gemini domain, such as:
+```bash
+capsule.ghed.in
+```
+```bash
+geminiprotocol.net
+```
+Or, leave the program, using 'q'.
+
+As soon as you enter a valid website, every link in it will be available in the menu, 
+you can access the link hitting the index related to it in the input field.
+
+
