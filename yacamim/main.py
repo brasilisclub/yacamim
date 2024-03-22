@@ -18,10 +18,11 @@ def absolutise_url(base, relative):
     # Absolutise relative links
     if "://" not in relative:
         # Python's URL tools somehow only work with known schemes?
-        base = base.replace("gemini://","http://")
+        base = base.replace("gemini://", "http://")
         relative = urllib.parse.urljoin(base, relative)
         relative = relative.replace("http://", "gemini://")
     return relative
+
 
 def start():
     while True:
@@ -32,7 +33,12 @@ def start():
             break
         # Get URL, from menu, history or direct entry
         if cmd.isnumeric():
-            url = menu[int(cmd)-1]
+            try:
+                url = menu[int(cmd)-1]
+            except Exception as err:
+                print("Error: ", err)
+                print("Índice inválido, tente novamente")
+                continue
         elif cmd.lower() == "b":
             url = hist.pop()
         else:
@@ -51,7 +57,7 @@ def start():
                 context = ssl.create_default_context()
                 context.check_hostname = False
                 context.verify_mode = ssl.CERT_NONE
-                socket_object = context.wrap_socket(socket_object, server_hostname = parsed_url.netloc)
+                socket_object = context.wrap_socket(socket_object, server_hostname=parsed_url.netloc)
                 socket_object.sendall((url + '\r\n').encode("UTF-8"))
                 # Get header and check for redirects
                 fp = socket_object.makefile("rb")
@@ -62,7 +68,7 @@ def start():
                 if status.startswith("1"):
                     # Prompt
                     query = input("INPUT" + mime + "> ")
-                    url += "?" + urllib.parse.quote(query) # Bit lazy...
+                    url += "?" + urllib.parse.quote(query)
                 # Follow redirects
                 elif status.startswith("3"):
                     url = absolutise_url(url, mime)
@@ -82,7 +88,7 @@ def start():
             # Decode according to declared charset
             mime, mime_opts = cgi.parse_header(mime)
             body = fp.read()
-            body = body.decode(mime_opts.get("charset","UTF-8"))
+            body = body.decode(mime_opts.get("charset", "UTF-8"))
             # Handle a Gemini map
             if mime == "text/gemini":
                 menu = []
@@ -114,3 +120,4 @@ def start():
             os.unlink(tmpfp.name)
         # Update history
         hist.append(url)
+
