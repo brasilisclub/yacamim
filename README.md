@@ -12,15 +12,34 @@ of every reader's privacy, attention, and bandwidth.'
 
 I kind of fell in love with the idea of a simplistic internet environment, without all those shiny apps and ads all over the place. 
 Gemini has become my go-to place to discover new blogs and navigate between documents.
-
-### CLI Version
+### CLI Version (Currently available)
 It's a basic implementation in Python, designed to better understand how I can connect to the internet via the Gemini protocol. It's not 
 supposed to be used on a daily basis, but if you like the vintage vibe that comes from using the terminal to surf the internet, go ahead! 
 I'll add some improvements to make this experience even better for you all.
 
-### GUI Version
+### GUI Version (Future release)
 That's the main application. I'm looking to develop the 'backend' in Lua and the 'frontend' in GTK-rs. It's a really complex project, and it 
 might take a few months to get a working prototype, so I won't set a target release date (sorry).
 
-### Mobile Version
+### Mobile Version (In our roadmap)
 It's not discarded, but also somewhat far-fetched for now. I aim to develop the GUI version first and then take a look at that.
+
+### More Details
+Visit [Gemini Specifications](https://geminiprotocol.net/docs/specification.gmi) to get more details over the implementation of this software.
+
+### Usage
+Yacamim uses [Poetry]() to manage its dependecies, so we recommend to install it.
+Initially, you will need to clone the project:
+```bash
+git clone https://github.com/thigcampos/yacamim.git
+```
+
+Then, install the project using `poetry`:
+```bash
+poetry install
+```
+
+And, finally, run the `yacamim` command:
+```bash
+poetry run yacamim
+```
