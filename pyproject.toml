@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "yacamim"
+version = "0.1.0"
+description = "CLI Gemini protocol client"
+authors = ["Thiago Campos <ola@thigcampos.com>"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+yacamim = "yacamim.main:start"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
