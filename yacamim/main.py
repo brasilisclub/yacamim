@@ -34,7 +34,7 @@ def start():
         # Get URL, from menu, history or direct entry
         if cmd.isnumeric():
             try:
-                url = menu[int(cmd)-1]
+                url = menu[int(cmd) - 1]
             except Exception as err:
                 print("Error: ", err)
                 print("Índice inválido, tente novamente")
@@ -57,8 +57,10 @@ def start():
                 context = ssl.create_default_context()
                 context.check_hostname = False
                 context.verify_mode = ssl.CERT_NONE
-                socket_object = context.wrap_socket(socket_object, server_hostname=parsed_url.netloc)
-                socket_object.sendall((url + '\r\n').encode("UTF-8"))
+                socket_object = context.wrap_socket(
+                    socket_object, server_hostname=parsed_url.netloc
+                )
+                socket_object.sendall((url + "\r\n").encode("UTF-8"))
                 # Get header and check for redirects
                 fp = socket_object.makefile("rb")
                 header = fp.readline()
@@ -120,4 +122,3 @@ def start():
             os.unlink(tmpfp.name)
         # Update history
         hist.append(url)
-
