@@ -31,7 +31,7 @@ Visit [Gemini Specifications](https://geminiprotocol.net/docs/specification.gmi)
 #### Globally (using `pipx`)
 To install through `pipx`, run: 
 ```bash
-pipx install git+https://github.com/thigcampos/yacamim
+pipx install git+https://github.com/brasilisclub/yacamim
 ```
 
 Then, you are able to use the `yacamim` command globally.
