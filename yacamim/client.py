@@ -1,4 +1,3 @@
-
 import cgi
 import mailcap
 import os
@@ -7,6 +6,7 @@ import ssl
 import tempfile
 import textwrap
 import urllib.parse
+
 
 class GeminiClient:
     def __init__(self):
@@ -38,7 +38,9 @@ class GeminiClient:
         context = ssl.create_default_context()
         context.check_hostname = False
         context.verify_mode = ssl.CERT_NONE
-        return context.wrap_socket(socket_object, server_hostname=parsed_url.netloc)
+        return context.wrap_socket(
+            socket_object, server_hostname=parsed_url.netloc
+        )
 
     def send_request(self, socket_object, url):
         socket_object.sendall((url + "\r\n").encode("UTF-8"))
@@ -139,6 +141,7 @@ class GeminiClient:
             result_url = self.gemini_transaction(url)
             if result_url:
                 self.hist.append(result_url)
+
 
 if __name__ == "__main__":
     client = GeminiClient()
